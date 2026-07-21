@@ -1,0 +1,120 @@
+{
+  "home": {
+    "badge": "Scientifically validated techniques",
+    "crisisButton": "HELP",
+    "tools": {
+      "breathing": "Let's breathe",
+      "education": "Learn what's happening",
+      "improvement": "Improvement exercises"
+    },
+    "prevention": "Prevention",
+    "footer": "You are safe. Everything will be okay."
+  },
+  "welcome": {
+    "characterMessage": "I'm here to help you",
+    "title": "Let's calm down together",
+    "descriptionPrefix": "I'll guide you through ",
+    "descriptionHighlight": "scientifically validated exercises",
+    "descriptionSuffix": " to regulate your nervous system.",
+    "start": "Start"
+  },
+  "breathing": {
+    "inhale": {
+      "instruction": "Inhale slowly"
+    },
+    "hold": {
+      "instruction": "Hold your breath"
+    },
+    "exhale": {
+      "instruction": "Exhale gently"
+    },
+    "pause": {
+      "instruction": "Pause"
+    },
+    "phases": {
+      "inhala": "INHALE",
+      "sostén": "HOLD",
+      "exhala": "EXHALE"
+    },
+    "cyclesCompleted": "Cycles remaining: {{count}}",
+    "continue": "Continue",
+    "voice": {
+      "inhale": "Breathe in... slowly",
+      "hold": "Hold...",
+      "exhale": "Breathe out... gently",
+      "pause": "Pause..."
+    }
+  },
+  "grounding": {
+    "badge": "Scientifically validated technique",
+    "senses": {
+      "sight": "sight",
+      "touch": "touch",
+      "hearing": "hearing",
+      "smell": "smell",
+      "taste": "taste"
+    },
+    "prompts": {
+      "sight": "Name 5 things you can see",
+      "touch": "Name 4 things you can touch",
+      "hearing": "Name 3 things you can hear",
+      "smell": "Name 2 things you can smell",
+      "taste": "Name 1 thing you can taste"
+    },
+    "status": {
+      "completed": "Done",
+      "pending": "Pending"
+    },
+    "of": "of",
+    "found": "Found one",
+    "next": "Next",
+    "complete": "Complete"
+  },
+  "journal": {
+    "thought": {
+      "label": "Thought",
+      "placeholder": "What thought is affecting you?",
+      "hint": "Write whatever comes to mind first"
+    },
+    "emotion": {
+      "label": "Emotion",
+      "placeholder": "How does it make you feel?",
+      "hint": "It's okay to feel what you feel"
+    },
+    "perspective": {
+      "label": "Perspective",
+      "placeholder": "Is there another way to see it?",
+      "hint": "There are no wrong answers here"
+    }
+  },
+  "completion": {
+    "title": "You did it",
+    "description": "You've completed the emotional regulation exercises.",
+    "subDescription": "You're more present now. Your nervous system is calming down.",
+    "affirmations": [
+      "You did a great job",
+      "You faced your discomfort with courage",
+      "Every time you practice, you get stronger"
+    ],
+    "returnHome": "Return home"
+  },
+  "education": {
+    "title": "Psychoeducation",
+    "subtitle": "Learn about anxiety and coping techniques",
+    "topics": [
+      {
+        "title": "What is anxiety?",
+        "content": "Anxiety is a natural body response to stressful situations. It is normal to feel anxious occasionally, but when it becomes excessive it can affect your daily life."
+      },
+      {
+        "title": "Breathing Techniques",
+        "content": "Deep breathing activates the parasympathetic nervous system, helping to reduce the fight-or-flight response and promoting calm."
+      },
+      {
+        "title": "5-4-3-2-1 Grounding",
+        "content": "This technique helps you reconnect with the present using your senses: 5 things you see, 4 you touch, 3 you hear, 2 you smell, 1 you taste."
+      }
+    ],
+    "continue": "Continue"
+  }
+}

@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-nati
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useTranslation } from "react-i18next";
 import { Colors } from "../constants/colors";
 
 interface EducationScreenProps {
@@ -10,28 +11,12 @@ interface EducationScreenProps {
   onBack: () => void;
 }
 
-const educationTopics = [
-  {
-    title: "¿Qué es la ansiedad?",
-    content:
-      "La ansiedad es una respuesta natural del cuerpo ante situaciones de estrés. Es normal sentir ansiedad ocasionalmente, pero cuando se vuelve excesiva puede afectar tu vida diaria.",
-  },
-  {
-    title: "Técnicas de Respiración",
-    content:
-      "La respiración profunda activa el sistema nervioso parasimpático, ayudando a reducir la respuesta de lucha o huida y promoviendo la calma.",
-  },
-  {
-    title: "Grounding 5-4-3-2-1",
-    content:
-      "Esta técnica te ayuda a reconectarte con el presente usando tus sentidos: 5 cosas que ves, 4 que tocas, 3 que oyes, 2 que hueles, 1 que saboreas.",
-  },
-];
-
 export const EducationScreen: React.FC<EducationScreenProps> = ({
   onComplete,
   onBack,
 }) => {
+  const { t } = useTranslation();
+  const topics = t("education.topics", { returnObjects: true }) as { title: string; content: string }[];
   return (
     <LinearGradient
       colors={[Colors.background.dark, Colors.background.medium, Colors.background.light]}
@@ -50,14 +35,12 @@ export const EducationScreen: React.FC<EducationScreenProps> = ({
             <View style={styles.iconContainer}>
               <Ionicons name="bulb-outline" size={24} color="white" />
             </View>
-            <Text style={styles.title}>Psicoeducación</Text>
-            <Text style={styles.subtitle}>
-              Aprende sobre ansiedad y técnicas de manejo
-            </Text>
+            <Text style={styles.title}>{t("education.title")}</Text>
+            <Text style={styles.subtitle}>{t("education.subtitle")}</Text>
           </View>
 
           <View style={styles.topicsContainer}>
-            {educationTopics.map((topic, index) => (
+            {topics.map((topic, index) => (
               <View key={index} style={styles.topicCard}>
                 <Text style={styles.topicTitle}>{topic.title}</Text>
                 <Text style={styles.topicContent}>{topic.content}</Text>
@@ -76,7 +59,7 @@ export const EducationScreen: React.FC<EducationScreenProps> = ({
               end={{ x: 1, y: 1 }}
               style={styles.completeButtonGradient}
             >
-              <Text style={styles.completeButtonText}>Continuar</Text>
+              <Text style={styles.completeButtonText}>{t("education.continue")}</Text>
             </LinearGradient>
           </TouchableOpacity>
         </ScrollView>

@@ -3,30 +3,26 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Animated } from "
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useTranslation } from "react-i18next";
 import { ToolCard } from "../components/ToolCard";
 import { Colors } from "../constants/colors";
 import { ScreenPhase } from "../types";
+
+const BUTTON_SIZE = 240;
 
 interface HomeScreenProps {
   onNavigate: (screen: ScreenPhase) => void;
 }
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
-  const pulseAnim = React.useRef(new Animated.Value(1)).current;
+  const { t } = useTranslation();
+  const buttonPulse = React.useRef(new Animated.Value(1)).current;
 
   React.useEffect(() => {
     Animated.loop(
       Animated.sequence([
-        Animated.timing(pulseAnim, {
-          toValue: 1.15,
-          duration: 3000,
-          useNativeDriver: true,
-        }),
-        Animated.timing(pulseAnim, {
-          toValue: 1,
-          duration: 3000,
-          useNativeDriver: true,
-        }),
+        Animated.timing(buttonPulse, { toValue: 1.06, duration: 1800, useNativeDriver: true }),
+        Animated.timing(buttonPulse, { toValue: 1, duration: 1800, useNativeDriver: true }),
       ])
     ).start();
   }, []);
@@ -43,114 +39,69 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
         >
           {/* Header */}
           <View style={styles.header}>
-            <Text style={styles.title}>Calmy</Text>
             <View style={styles.badge}>
               <Ionicons name="flask" size={16} color="#a8e6cf" />
-              <Text style={styles.badgeText}>Técnicas validadas científicamente</Text>
+              <Text style={styles.badgeText}>{t("home.badge")}</Text>
               <Ionicons name="trophy" size={16} color="#a8e6cf" />
             </View>
           </View>
 
           {/* Crisis Button */}
           <View style={styles.crisisButtonContainer}>
-            <Animated.View
-              style={[
-                styles.pulseRing,
-                {
-                  transform: [{ scale: pulseAnim }],
-                },
-              ]}
-            />
-            <TouchableOpacity
-              style={styles.crisisButton}
-              onPress={() => onNavigate("welcome-guide")}
-              activeOpacity={0.9}
-            >
-              <LinearGradient
-                colors={[Colors.primary, Colors.primaryDark]}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 1 }}
-                style={styles.crisisButtonGradient}
-              >
-                <Animated.View
-                  style={[
-                    styles.heartContainer,
-                    {
-                      transform: [{ scale: pulseAnim }],
-                    },
-                  ]}
+            <Animated.View style={{ transform: [{ scale: buttonPulse }] }}>
+              <View style={styles.ballWrapper}>
+                {/* Dark base — asoma abajo dando efecto 3D */}
+                <View style={styles.ballBase} />
+                <TouchableOpacity
+                  style={styles.crisisButton}
+                  onPress={() => onNavigate("breathing")}
+                  activeOpacity={0.88}
                 >
-                  <Ionicons name="heart" size={80} color="white" />
-                </Animated.View>
-                <Text style={styles.crisisButtonText}>Necesito calmarme</Text>
-              </LinearGradient>
-            </TouchableOpacity>
+                  <LinearGradient
+                    colors={["#f15134", "#fe2f14"]}
+                    start={{ x: 0.3, y: 0 }}
+                    end={{ x: 0.7, y: 1 }}
+                    style={styles.crisisButtonGradient}
+                  >
+                    <Text style={styles.crisisButtonText}>{t("home.crisisButton")}</Text>
+                  </LinearGradient>
+                </TouchableOpacity>
+              </View>
+            </Animated.View>
           </View>
 
           {/* Tools Grid */}
           <View style={styles.toolsGrid}>
             <ToolCard
               icon="leaf"
-              title="Respiración"
+              title={t("home.tools.breathing")}
               gradient={[Colors.primary, Colors.primaryDark]}
               onPress={() => onNavigate("breathing")}
             />
             <ToolCard
-              icon="create-outline"
-              title="Escritura Expresiva"
-              gradient={["#4361ee", "#3b82f6"]}
-              onPress={() => onNavigate("expressive-writing")}
-              isPremium
-            />
-            <ToolCard
-              icon="anchor"
-              title="Grounding"
-              gradient={["#7ba8d9", "#6b9edb"]}
-              onPress={() => onNavigate("grounding")}
-            />
-            <ToolCard
-              icon="medical"
-              title="Registro TCC"
-              gradient={["#a855f7", "#c084fc"]}
-              onPress={() => onNavigate("thought-record")}
-              isPremium
-            />
-            <ToolCard
-              icon="time-outline"
-              title="Historial TCC"
-              gradient={["#7bc7a7", "#a3dbc4"]}
-              onPress={() => onNavigate("thought-history")}
-            />
-            <ToolCard
               icon="bulb-outline"
-              title="Psicoeducación"
+              title={t("home.tools.education")}
               gradient={["#6366f1", "#8b5cf6"]}
               onPress={() => onNavigate("education")}
-              isPremium
             />
+          </View>
+
+          {/* Prevención */}
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>{t("home.prevention")}</Text>
+          </View>
+          <View style={styles.toolsGrid}>
             <ToolCard
-              icon="game-controller"
-              title="Juego Calmante"
-              gradient={["#8bb4dd", "#7ba8d9"]}
-              onPress={() => onNavigate("game")}
-            />
-            <ToolCard
-              icon="book"
-              title="Diario"
-              gradient={[Colors.primary, Colors.primaryDark]}
-              onPress={() => onNavigate("journal")}
-            />
-            <ToolCard
-              icon="pulse-outline"
-              title="Monitoreo"
-              gradient={["#3b82f6", "#6366f1"]}
-              onPress={() => onNavigate("monitoring")}
+              icon="fitness-outline"
+              title={t("home.tools.improvement")}
+              gradient={["#1a9e6e", "#0d7a52"]}
+              onPress={() => {}}
               isPremium
             />
           </View>
 
           {/* Footer */}
-          <Text style={styles.footerText}>Estás a salvo. Todo va a estar bien.</Text>
+          <Text style={styles.footerText}>{t("home.footer")}</Text>
         </ScrollView>
       </SafeAreaView>
     </LinearGradient>
@@ -200,44 +151,48 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   crisisButtonContainer: {
-    marginBottom: 56,
+    marginBottom: 40,
     alignItems: "center",
     justifyContent: "center",
   },
-  pulseRing: {
+  ballWrapper: {
+    width: BUTTON_SIZE,
+    height: BUTTON_SIZE + 14,
+    alignItems: "center",
+  },
+  ballBase: {
     position: "absolute",
-    width: 320,
-    height: 320,
-    borderRadius: 160,
-    borderWidth: 4,
-    borderColor: "rgba(107, 158, 219, 0.4)",
+    bottom: 0,
+    width: BUTTON_SIZE,
+    height: BUTTON_SIZE,
+    borderRadius: BUTTON_SIZE / 2,
+    backgroundColor: Colors.background.dark,
   },
   crisisButton: {
-    width: 288,
-    height: 288,
-    borderRadius: 144,
+    width: BUTTON_SIZE,
+    height: BUTTON_SIZE,
+    borderRadius: BUTTON_SIZE / 2,
     overflow: "hidden",
-    shadowColor: Colors.primary,
-    shadowOffset: { width: 0, height: 20 },
-    shadowOpacity: 0.5,
-    shadowRadius: 30,
-    elevation: 20,
+    position: "absolute",
+    top: 0,
   },
   crisisButtonGradient: {
     width: "100%",
     height: "100%",
     alignItems: "center",
     justifyContent: "center",
-    gap: 8,
-    padding: 16,
-  },
-  heartContainer: {
-    marginBottom: 16,
   },
   crisisButtonText: {
-    fontSize: 22,
+    fontSize: 32,
     fontWeight: "700",
     color: "white",
+    textAlign: "center",
+    letterSpacing: 4.9,
+  },
+  crisisSubtitle: {
+    marginTop: 20,
+    fontSize: 14,
+    color: Colors.text.secondary,
     textAlign: "center",
   },
   toolsGrid: {
@@ -247,6 +202,17 @@ const styles = StyleSheet.create({
     maxWidth: 448,
     marginBottom: 32,
     gap: 12,
+  },
+  sectionHeader: {
+    width: "100%",
+    maxWidth: 448,
+    marginBottom: 12,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: Colors.text.primary,
+    letterSpacing: -0.3,
   },
   footerText: {
     fontSize: 14,

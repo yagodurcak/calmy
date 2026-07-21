@@ -1,17 +1,17 @@
 export const journalSteps = [
   {
-    label: "Pensamiento",
-    placeholder: "¿Qué pensamiento te está afectando?",
-    hint: "Escribe lo primero que venga a tu mente",
+    labelKey: "journal.thought.label",
+    placeholderKey: "journal.thought.placeholder",
+    hintKey: "journal.thought.hint",
   },
   {
-    label: "Emoción",
-    placeholder: "¿Cómo te hace sentir?",
-    hint: "Está bien sentir lo que sientes",
+    labelKey: "journal.emotion.label",
+    placeholderKey: "journal.emotion.placeholder",
+    hintKey: "journal.emotion.hint",
   },
   {
-    label: "Perspectiva",
-    placeholder: "¿Hay otra forma de verlo?",
-    hint: "No hay respuestas incorrectas aquí",
+    labelKey: "journal.perspective.label",
+    placeholderKey: "journal.perspective.placeholder",
+    hintKey: "journal.perspective.hint",
   },
 ];

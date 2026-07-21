@@ -1,0 +1,120 @@
+{
+  "home": {
+    "badge": "Técnicas validadas científicamente",
+    "crisisButton": "AUXILIO",
+    "tools": {
+      "breathing": "Respiremos",
+      "education": "Aprendamos que me pasa",
+      "improvement": "Ejercicios de mejora"
+    },
+    "prevention": "Prevención",
+    "footer": "Estás a salvo. Todo va a estar bien."
+  },
+  "welcome": {
+    "characterMessage": "Estoy aquí para ayudarte",
+    "title": "Vamos a calmarnos juntos",
+    "descriptionPrefix": "Te guiaré a través de ",
+    "descriptionHighlight": "ejercicios científicamente validados",
+    "descriptionSuffix": " para regular tu sistema nervioso.",
+    "start": "Comenzar"
+  },
+  "breathing": {
+    "inhale": {
+      "instruction": "Inhala lentamente"
+    },
+    "hold": {
+      "instruction": "Sostén el aire"
+    },
+    "exhale": {
+      "instruction": "Exhala suavemente"
+    },
+    "pause": {
+      "instruction": "Pausa"
+    },
+    "phases": {
+      "inhala": "INHALA",
+      "sostén": "SOSTÉN",
+      "exhala": "EXHALA"
+    },
+    "cyclesCompleted": "Ciclos restantes: {{count}}",
+    "continue": "Continuar",
+    "voice": {
+      "inhale": "Inhala... lentamente",
+      "hold": "Sostén...",
+      "exhale": "Exhala... suavemente",
+      "pause": "Pausa..."
+    }
+  },
+  "grounding": {
+    "badge": "Técnica validada científicamente",
+    "senses": {
+      "sight": "vista",
+      "touch": "tacto",
+      "hearing": "oído",
+      "smell": "olfato",
+      "taste": "gusto"
+    },
+    "prompts": {
+      "sight": "Nombra 5 cosas que puedas ver",
+      "touch": "Nombra 4 cosas que puedas tocar",
+      "hearing": "Nombra 3 cosas que puedas oír",
+      "smell": "Nombra 2 cosas que puedas oler",
+      "taste": "Nombra 1 cosa que puedas saborear"
+    },
+    "status": {
+      "completed": "Completado",
+      "pending": "Pendiente"
+    },
+    "of": "de",
+    "found": "Encontré uno",
+    "next": "Siguiente",
+    "complete": "Completar"
+  },
+  "journal": {
+    "thought": {
+      "label": "Pensamiento",
+      "placeholder": "¿Qué pensamiento te está afectando?",
+      "hint": "Escribe lo primero que venga a tu mente"
+    },
+    "emotion": {
+      "label": "Emoción",
+      "placeholder": "¿Cómo te hace sentir?",
+      "hint": "Está bien sentir lo que sientes"
+    },
+    "perspective": {
+      "label": "Perspectiva",
+      "placeholder": "¿Hay otra forma de verlo?",
+      "hint": "No hay respuestas incorrectas aquí"
+    }
+  },
+  "completion": {
+    "title": "Lo lograste",
+    "description": "Has completado los ejercicios de regulación emocional.",
+    "subDescription": "Estás más presente ahora. Tu sistema nervioso se está calmando.",
+    "affirmations": [
+      "Has hecho un gran trabajo",
+      "Enfrentaste tu malestar con valentía",
+      "Cada vez que practicas, te vuelves más fuerte"
+    ],
+    "returnHome": "Volver al inicio"
+  },
+  "education": {
+    "title": "Psicoeducación",
+    "subtitle": "Aprende sobre ansiedad y técnicas de manejo",
+    "topics": [
+      {
+        "title": "¿Qué es la ansiedad?",
+        "content": "La ansiedad es una respuesta natural del cuerpo ante situaciones de estrés. Es normal sentir ansiedad ocasionalmente, pero cuando se vuelve excesiva puede afectar tu vida diaria."
+      },
+      {
+        "title": "Técnicas de Respiración",
+        "content": "La respiración profunda activa el sistema nervioso parasimpático, ayudando a reducir la respuesta de lucha o huida y promoviendo la calma."
+      },
+      {
+        "title": "Grounding 5-4-3-2-1",
+        "content": "Esta técnica te ayuda a reconectarte con el presente usando tus sentidos: 5 cosas que ves, 4 que tocas, 3 que oyes, 2 que hueles, 1 que saboreas."
+      }
+    ],
+    "continue": "Continuar"
+  }
+}

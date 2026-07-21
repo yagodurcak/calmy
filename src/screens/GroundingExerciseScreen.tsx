@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-nati
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useTranslation } from "react-i18next";
 import { CalmCharacter } from "../components/CalmCharacter";
 import { Colors } from "../constants/colors";
 import { groundingSteps } from "../constants/grounding";
@@ -24,6 +25,7 @@ export const GroundingExerciseScreen: React.FC<GroundingExerciseScreenProps> = (
   onComplete,
   onBack,
 }) => {
+  const { t } = useTranslation();
   const [currentStep, setCurrentStep] = useState(0);
   const [itemsFound, setItemsFound] = useState(0);
 
@@ -56,7 +58,7 @@ export const GroundingExerciseScreen: React.FC<GroundingExerciseScreenProps> = (
           {/* Scientific Badge */}
           <View style={styles.badge}>
             <Ionicons name="flask" size={16} color={Colors.primary} />
-            <Text style={styles.badgeText}>Técnica validada científicamente</Text>
+            <Text style={styles.badgeText}>{t("grounding.badge")}</Text>
           </View>
 
           {/* Back Button */}
@@ -83,9 +85,9 @@ export const GroundingExerciseScreen: React.FC<GroundingExerciseScreenProps> = (
               <Ionicons name={IconName} size={48} color={step.color} />
             </View>
 
-            <Text style={styles.promptText}>{step.prompt}</Text>
+            <Text style={styles.promptText}>{t(step.promptKey)}</Text>
             <Text style={styles.countText}>
-              {itemsFound} de {step.count}
+              {itemsFound} {t("grounding.of")} {step.count}
             </Text>
           </View>
 
@@ -120,7 +122,7 @@ export const GroundingExerciseScreen: React.FC<GroundingExerciseScreenProps> = (
                     index < itemsFound && styles.itemTextCompleted,
                   ]}
                 >
-                  {index < itemsFound ? "Completado" : "Pendiente"}
+                  {index < itemsFound ? t("grounding.status.completed") : t("grounding.status.pending")}
                 </Text>
               </View>
             ))}
@@ -141,10 +143,10 @@ export const GroundingExerciseScreen: React.FC<GroundingExerciseScreenProps> = (
             >
               <Text style={styles.nextButtonText}>
                 {itemsFound < step.count
-                  ? "Encontré uno"
+                  ? t("grounding.found")
                   : currentStep < groundingSteps.length - 1
-                  ? "Siguiente"
-                  : "Completar"}
+                  ? t("grounding.next")
+                  : t("grounding.complete")}
               </Text>
               <Ionicons name="arrow-forward" size={20} color="white" />
             </LinearGradient>

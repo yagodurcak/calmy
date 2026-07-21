@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-nati
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useTranslation } from "react-i18next";
 import { CalmCharacter } from "../components/CalmCharacter";
 import { Colors } from "../constants/colors";
 
@@ -10,15 +11,11 @@ interface CompletionScreenProps {
   onReturnHome: () => void;
 }
 
-const affirmations = [
-  "Has hecho un gran trabajo",
-  "Enfrentaste tu malestar con valentía",
-  "Cada vez que practicas, te vuelves más fuerte",
-];
-
 export const CompletionScreen: React.FC<CompletionScreenProps> = ({
   onReturnHome,
 }) => {
+  const { t } = useTranslation();
+  const affirmations = t("completion.affirmations", { returnObjects: true }) as string[];
   return (
     <LinearGradient
       colors={[Colors.background.dark, Colors.background.medium, Colors.background.light]}
@@ -39,13 +36,9 @@ export const CompletionScreen: React.FC<CompletionScreenProps> = ({
             <View style={styles.checkContainer}>
               <Ionicons name="checkmark-circle" size={80} color={Colors.success} />
             </View>
-            <Text style={styles.title}>Lo lograste</Text>
-            <Text style={styles.description}>
-              Has completado los ejercicios de regulación emocional.
-            </Text>
-            <Text style={styles.subDescription}>
-              Estás más presente ahora. Tu sistema nervioso se está calmando.
-            </Text>
+            <Text style={styles.title}>{t("completion.title")}</Text>
+            <Text style={styles.description}>{t("completion.description")}</Text>
+            <Text style={styles.subDescription}>{t("completion.subDescription")}</Text>
           </View>
 
           {/* Affirmations */}
@@ -70,7 +63,7 @@ export const CompletionScreen: React.FC<CompletionScreenProps> = ({
               style={styles.homeButtonGradient}
             >
               <Ionicons name="home" size={24} color="white" />
-              <Text style={styles.homeButtonText}>Volver al inicio</Text>
+              <Text style={styles.homeButtonText}>{t("completion.returnHome")}</Text>
             </LinearGradient>
           </TouchableOpacity>
         </ScrollView>
